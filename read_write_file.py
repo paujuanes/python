@@ -2,13 +2,14 @@ fhand = open(r'UMichigan_PyCourse\mbox.txt')
 fedit = open('output.txt', 'w')
 okline = 0  # Counting processed lines
 koline = 0  # Counting ignored lines
-'''
+
+# Parsing and extracting email usernames from a file -- Long version
 for line in fhand :
     line = line.rstrip()
     if line.find('@uct.ac.za') == -1 :
         koline += 1
         continue
-    # Split the line to isolate the left part of the @ (the username)
+    # Split the line to isolate the left part of the '@' (the username)
     part = line.partition('@')
     # Find the whitespace before the username
     pos = part[0].rfind(' ')
@@ -27,7 +28,8 @@ print('Emails found: {:d}. Ignored lines: {:d}'.format(okline, koline))
 fedit.write('Emails found: {:d}. Ignored lines: {:d}'.format(okline, koline))
 fedit.close()
 fhand.close()
-'''
+
+# Short version
 for line in fhand:
     line = line.rstrip()
     if not line.startswith('From: '):
@@ -39,3 +41,5 @@ for line in fhand:
     username = email_split[0]
     okline +=1
     print(username)
+
+# Thanks to Dr. Chuck Severance for teaching me this
