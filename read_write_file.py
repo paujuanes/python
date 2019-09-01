@@ -30,7 +30,7 @@ fhand.close()
 '''
 for line in fhand:
     line = line.rstrip()
-    if line.startswith('From: '):
+    if not line.startswith('From: '):
         koline += 1
         continue
     words = line.split()
