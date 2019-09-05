@@ -1,6 +1,12 @@
-def left2(str):
-    return str[2:]+str[:2]
+def front_back(str):
+    lst = list(str)
+    lst[0], lst[-1] = lst[-1], lst[0]
+    str = ''.join(lst)
+    return str
 
-print(left2('Hello'))
-print(left2('java'))
-print(left2('Hi'))
+print(front_back('mallek'))
+try:
+    print(front_back(''))
+except:
+    print('Please, no empty strings.')
+print(front_back('a'))
