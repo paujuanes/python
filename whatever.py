@@ -1,12 +1,6 @@
-def front_back(str):
-    lst = list(str)
-    lst[0], lst[-1] = lst[-1], lst[0]
-    str = ''.join(lst)
-    return str
+def first_last6(nums):
+    return nums[0] == 6 or nums[-1] == 6
 
-print(front_back('mallek'))
-try:
-    print(front_back(''))
-except:
-    print('Please, no empty strings.')
-print(front_back('a'))
+print(first_last6([1, 2, 6]))
+print(first_last6([6, 1, 2, 3]))
+print(first_last6([13, 6, 1, 2, 3]))
