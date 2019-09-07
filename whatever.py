@@ -1,6 +1,10 @@
-def first_last6(nums):
-    return nums[0] == 6 or nums[-1] == 6
+def max_end3(nums):
+    mx = max(nums)
+    for i in range(len(nums)):
+        nums[i] = mx
+    return nums
 
-print(first_last6([1, 2, 6]))
-print(first_last6([6, 1, 2, 3]))
-print(first_last6([13, 6, 1, 2, 3]))
+print(max_end3([1, 2, 3]))
+print(max_end3([1, 11, 3]))
+print(max_end3([13, 2, 3]))
+print(max_end3([1, 21, 3]))
