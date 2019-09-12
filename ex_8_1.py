@@ -1,3 +1,16 @@
+'''
+Exercise  8.1: Write a function called chop that takes a list and modifies it,
+removing the first and last elements, and returns None.
+
+Then write a function called middle that takes a list and returns a new list
+that contains all but the first and last e lements.
+
+Python for Everybody: Exploring Data Using Python 3
+by Charles R. Severance
+
+Solution by Pau Juanes, Sep 12th 2019
+'''
+
 def chop(lst):
     del lst[0]
     del lst[-1]
