@@ -1,8 +1,8 @@
-def has23(nums):
-    return 2 in nums or 3 in nums
+mcase = {'a': 10, 'b': 34, 'A': 7, 'Z': 3}
 
+mcase_frequency = {
+    k.lower(): mcase.get(k.lower(), 0) + mcase.get(k.upper(), 0)
+    for k in mcase.keys()
+}
 
-print(has23([1, 2, 3]))
-print(has23([1, 2, 3, 4]))
-print(has23([7, 4, 6, 2]))
-print(has23([7]))
+print(mcase_frequency)
