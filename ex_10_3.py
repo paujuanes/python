@@ -26,7 +26,7 @@ for key, val in letter_counts.items():
 
 maxletter.sort(reverse=True)
 
-for val, key in maxletter:
+for val, key in maxletter[:10]:
     val = round((val/lettercount)*100, 2)
     print(f'Letter {key} represents {val}%')
 print(f'For a total of {lettercount} letters in the given text.')
