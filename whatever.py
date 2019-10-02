@@ -1,8 +1,5 @@
-mcase = {'a': 10, 'b': 34, 'A': 7, 'Z': 3}
+def strbts(str):
+    slc = slice(-1, 2)
+    return str[slc]
 
-mcase_frequency = {
-    k.lower(): mcase.get(k.lower(), 0) + mcase.get(k.upper(), 0)
-    for k in mcase.keys()
-}
-
-print(mcase_frequency)
+print(strbts('Heeololeo'))

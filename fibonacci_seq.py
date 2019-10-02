@@ -33,6 +33,6 @@ def takeNumber():
 num = takeNumber()
 
 if isFibonacci(num):
-    print('{} IS a Fibonacci number!'.format(num))
+    print(f'{num} IS a Fibonacci number!')
 else:
-    print('{} is NOT a Fibonacci number...'.format(num))
+    print(f'{num} is NOT a Fibonacci number...')
