@@ -1,7 +1,11 @@
-import string
+import re, string
 
-#alphabet = list(string.ascii_lowercase)
+file_r = open(r'UMichigan_PyCourse\romeo-full.txt')
 
-sentence = 'The quick, brown, fox jumps over the lazy dog.'
-sentence = sentence.translate(str.maketrans('', '', string.punctuation))
-sentence = sentence.lower()
+for line in file_r:
+    line = line.rstrip()
+    line = line.lower()
+    line = line.translate(line.maketrans('', '', string.punctuation))
+    if re.search(r'\ba', line):
+        words = re.findall(r'\ba\S*i\S*', line)
+        print(words)
