@@ -17,6 +17,7 @@ for line in file_r:
 #print(lst)
 
 c = collections.Counter(lst)
-common = c.most_common(10)
+top = c.most_common(10)
 
-print(common)
+for k,v in top:
+    print(k,v)
