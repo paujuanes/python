@@ -8,8 +8,8 @@ for line in file_r:
     line = line.rstrip()
     line = line.lower()
     line = line.translate(line.maketrans('', '', string.punctuation))
-    if re.search(r'(\bl\S{3})\s', line):
-        words = re.findall(r'(\bl\S{3})\s', line)
+    if re.search(r'(\bh\S+)\s', line):
+        words = re.findall(r'(\bh\S+)\s', line)
         for word in words:
             lst.append(word)
         #print(word)
@@ -17,7 +17,7 @@ for line in file_r:
 #print(lst)
 
 c = collections.Counter(lst)
-top = c.most_common(10)
+top = c.most_common(20)
 
 for k,v in top:
     print(k,v)
