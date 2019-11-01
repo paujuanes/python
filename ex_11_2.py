@@ -16,8 +16,8 @@ counts = 0    # Counting the numbers found
 
 for line in file_r:
     line = line.rstrip()
-    if re.search('^New .*: \d+', line):
-        num = re.findall('^New .*: (\d+)', line)[0]  # Finding and storing the number
+    if re.search(r'^New .*: \d+', line):
+        num = re.findall(r'^New .*: (\d+)', line)[0]  # Finding and storing the number
         lst.append(int(num))  # Appending the number to the list as an int
         counts += 1
 

@@ -15,8 +15,8 @@ numList = list()
 
 for line in file_r:
     line = line.rstrip()
-    if re.search('\d+', line):
-        lst = re.findall('\d+', line)
+    if re.search(r'\d+', line):
+        lst = re.findall(r'\d+', line)
         for num in lst:
             numList.append(int(num))
 
