@@ -8,6 +8,7 @@
 import urllib.request, urllib.parse, urllib.error
 from bs4 import BeautifulSoup
 import ssl
+import re
 
 # Ignore SSL certificate errors
 ctx = ssl.create_default_context()
@@ -21,4 +22,10 @@ soup = BeautifulSoup(html, 'html.parser')
 # Retrieve all of the anchor tags
 tags = soup('a')
 for tag in tags:
-    print(tag.get('href', None))
+    #print(tag.get('href', None))
+    #maxTemp = re.findall(r'màx</span>([0-9,]+)<span', str(tag))
+    #print('TAG:', tag)
+    #print('URL:', tag.get('href', None))
+    if len(tag.contents) > 1:
+        print('Contents:', tag.contents[1])  # => Contents is the KEY!!!
+    #print('Attrs:', tag.attrs)
