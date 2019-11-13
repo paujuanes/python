@@ -1,6 +1,6 @@
 '''
-Exercise 12.3 (Assignment)
-Following Links in Python
+Exercise 13.1 (Assignment)
+Extracting data from XML
 
 In this assignment you will write a Python program somewhat similar to http://www.py4e.com/code3/geoxml.py.
 The program will prompt for a URL, read the XML data from that URL using urllib and then parse and extract
