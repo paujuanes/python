@@ -27,7 +27,7 @@ cur.execute('''CREATE TABLE IF NOT EXISTS Webs (url TEXT UNIQUE)''')
 cur.execute('SELECT id,url FROM Pages WHERE html is NULL and error is NULL ORDER BY RANDOM() LIMIT 1')
 row = cur.fetchone()
 if row is not None:
-    print("Restarting existing crawl.  Remove spider.sqlite to start a fresh crawl.")
+    print("Restarting existing crawl. Remove spider.sqlite to start a fresh crawl.")
 else :
     starturl = input('Enter web url or enter: ')
     if ( len(starturl) < 1 ) : starturl = 'http://www.dr-chuck.com/'
