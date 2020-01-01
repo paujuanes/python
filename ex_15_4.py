@@ -76,4 +76,4 @@ cur.execute('''
 ''')
 print(cur.fetchone())
 
-conn.close()
+cur.close()

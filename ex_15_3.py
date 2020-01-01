@@ -124,3 +124,5 @@ for entry in entries:
         album_id, genre_id, length, rating, count, skipped))
     
     conn.commit()
+    
+cur.close()
