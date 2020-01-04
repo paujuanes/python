@@ -95,7 +95,7 @@ while True:
         if ( len(sval) < 1 ) : break
         many = int(sval)
 
-    start = start + 1
+    start += 1
     cur.execute('SELECT id FROM Messages WHERE id=?', (start,) )
     try:
         row = cur.fetchone()
@@ -103,7 +103,7 @@ while True:
     except:
         row = None
 
-    many = many - 1
+    many -= 1
     url = baseurl + str(start) + '/' + str(start + 1)
 
     text = "None"
@@ -121,17 +121,17 @@ while True:
     except Exception as e:
         print("Unable to retrieve or parse page",url)
         print("Error",e)
-        fail = fail + 1
+        fail += 1
         if fail > 5 : break
         continue
 
     print(url,len(text))
-    count = count + 1
+    count += 1
 
     if not text.startswith("From "):
         print(text)
         print("Did not find From ")
-        fail = fail + 1
+        fail += 1
         if fail > 5 : break
         continue
 
@@ -142,25 +142,25 @@ while True:
     else:
         print(text)
         print("Could not find break between headers and body")
-        fail = fail + 1
+        fail += 1
         if fail > 5 : break
         continue
 
     email = None
-    x = re.findall('\nFrom: .* <(\S+@\S+)>\n', hdr)
+    x = re.findall(r'\nFrom: .* <(\S+@\S+)>\n', hdr)
     if len(x) == 1 :
-        email = x[0];
+        email = x[0]
         email = email.strip().lower()
         email = email.replace("<","")
     else:
-        x = re.findall('\nFrom: (\S+@\S+)\n', hdr)
+        x = re.findall(r'\nFrom: (\S+@\S+)\n', hdr)
         if len(x) == 1 :
-            email = x[0];
+            email = x[0]
             email = email.strip().lower()
             email = email.replace("<","")
 
     date = None
-    y = re.findall('\Date: .*, (.*)\n', hdr)
+    y = re.findall(r'\nDate: .*, (.*)\n', hdr)
     if len(y) == 1 :
         tdate = y[0]
         tdate = tdate[:26]
@@ -174,8 +174,8 @@ while True:
             continue
 
     subject = None
-    z = re.findall('\Subject: (.*)\n', hdr)
-    if len(z) == 1 : subject = z[0].strip().lower();
+    z = re.findall(r'\nSubject: (.*)\n', hdr)
+    if len(z) == 1 : subject = z[0].strip().lower()
 
     # Reset the fail counter
     fail = 0

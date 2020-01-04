@@ -42,7 +42,7 @@ def fixsender(sender,allsenders=None) :
     mpieces = sender.split("@")
     if len(mpieces) != 2 : return sender
     dns = mpieces[1]
-    x = dns
+    # x = dns
     pieces = dns.split(".")
     if dns.endswith(".edu") or dns.endswith(".com") or dns.endswith(".org") or dns.endswith(".net") :
         dns = ".".join(pieces[-2:])
@@ -101,19 +101,19 @@ def parsemaildate(md) :
 def parseheader(hdr, allsenders=None):
     if hdr is None or len(hdr) < 1 : return None
     sender = None
-    x = re.findall('\nFrom: .* <(\S+@\S+)>\n', hdr)
+    x = re.findall(r'\nFrom: .* <(\S+@\S+)>\n', hdr)
     if len(x) >= 1 :
         sender = x[0]
     else:
-        x = re.findall('\nFrom: (\S+@\S+)\n', hdr)
+        x = re.findall(r'\nFrom: (\S+@\S+)\n', hdr)
         if len(x) >= 1 :
             sender = x[0]
 
     # normalize the domain name of Email addresses
     sender = fixsender(sender, allsenders)
 
-    date = None
-    y = re.findall('\nDate: .*, (.*)\n', hdr)
+    # date = None
+    y = re.findall(r'\nDate: .*, (.*)\n', hdr)
     sent_at = None
     if len(y) >= 1 :
         tdate = y[0]
@@ -121,15 +121,15 @@ def parseheader(hdr, allsenders=None):
         try:
             sent_at = parsemaildate(tdate)
         except Exception as e:
-            # print('Date ignored ',tdate, e)
+            print('Date ignored ',tdate, e)
             return None
 
     subject = None
-    z = re.findall('\nSubject: (.*)\n', hdr)
+    z = re.findall(r'\nSubject: (.*)\n', hdr)
     if len(z) >= 1 : subject = z[0].strip().lower()
 
     guid = None
-    z = re.findall('\nMessage-ID: (.*)\n', hdr)
+    z = re.findall(r'\nMessage-ID: (.*)\n', hdr)
     if len(z) >= 1 : guid = z[0].strip().lower()
 
     if sender is None or sent_at is None or subject is None or guid is None :
@@ -172,7 +172,7 @@ for message_row in cur_1 :
 # Done with mapping.sqlite
 conn_1.close()
 
-# Open the main content (Read only)
+# Open the main content (Read only, just in case we're spidering at the same time)
 conn_1 = sqlite3.connect('file:content.sqlite?mode=ro', uri=True)
 cur_1 = conn_1.cursor()
 

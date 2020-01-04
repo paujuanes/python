@@ -110,7 +110,7 @@ Loaded allsenders 1588 and mapping 28 dns mapping 1
 751 2006-01-24T11:13:28-08:00 vrajgopalan@ucmerced.edu
 ...
 
-The gmodel.py program does a number of data cleaing steps
+The gmodel.py program does a number of data cleaning steps
 
 Domain names are truncated to two levels for .com, .org, .edu, and .net 
 other domain names are truncated to three levels.  So si.umich.edu becomes

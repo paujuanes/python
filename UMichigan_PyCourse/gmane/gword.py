@@ -16,8 +16,8 @@ cur.execute('SELECT subject_id FROM Messages')
 counts = dict()
 for message_row in cur :
     text = subjects[message_row[0]]
-    text = text.translate(str.maketrans('','',string.punctuation))
-    text = text.translate(str.maketrans('','','1234567890'))
+    text = text.translate(str.maketrans('','',string.punctuation))  # delete punctuation
+    text = text.translate(str.maketrans('','','1234567890'))  # delete numbers
     text = text.strip()
     text = text.lower()
     words = text.split()
@@ -26,6 +26,7 @@ for message_row in cur :
         counts[word] = counts.get(word,0) + 1
 
 x = sorted(counts, key=counts.get, reverse=True)
+# better with max() and min():
 highest = None
 lowest = None
 for k in x[:100]:

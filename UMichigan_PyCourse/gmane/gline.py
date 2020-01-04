@@ -61,7 +61,7 @@ for month in months:
         key = (month, org)
         val = counts.get(key,0)
         fhand.write(","+str(val))
-    fhand.write("]");
+    fhand.write("]")
 
 fhand.write("\n];\n")
 fhand.close()
