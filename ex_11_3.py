@@ -9,8 +9,8 @@ You will extract all the numbers in the file and compute the sum of the numbers.
 '''
 
 import re
-
-file_r = open('regex_sum_273033.txt')
+'''
+file_r = open('regex_sum_352453.txt')
 numList = list()
 
 for line in file_r:
@@ -21,3 +21,5 @@ for line in file_r:
             numList.append(int(num))
 
 print(sum(numList))
+'''
+print(sum([int(i) for i in re.findall(r'\d+', open('regex_sum_352453.txt').read())]))
